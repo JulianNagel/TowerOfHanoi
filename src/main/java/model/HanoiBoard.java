@@ -1,9 +1,8 @@
 package model;
 
-import java.util.ArrayList;
+import model.exception.InvalidMoveException;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
@@ -155,6 +154,15 @@ public record HanoiBoard(LinkedList<Integer> pegA, LinkedList<Integer> pegB, Lin
 	public String toString() {
 		return String.format("A:%s, B:%s, C:%s", pegA, pegB, pegC);
 	}
+
+	public void moveTo(int from, int to) {			/*implementiere!!!!!!!!*/
+	}
+
+	public String calculateBestMove() {
+		return "placeholder";
+	}
+	/*das au!!!
+	**/
 
 	/**
 	 * Identifies one of three pegs (rods/poles/sticks).
