@@ -155,8 +155,7 @@ public record HanoiBoard(LinkedList<Integer> pegA, LinkedList<Integer> pegB, Lin
 		return String.format("A:%s, B:%s, C:%s", pegA, pegB, pegC);
 	}
 
-	public void moveTo(int from, int to) {			/*implementiere!!!!!!!!*/
-	}
+
 
 	public String calculateBestMove() {
 		return "placeholder";
