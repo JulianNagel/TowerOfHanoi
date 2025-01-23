@@ -1,4 +1,4 @@
-package model.exception;
+package ch.bbw.towerofhanoi.model.exception;
 
 public class InvalidMoveException extends RuntimeException {
     public InvalidMoveException(String message) {

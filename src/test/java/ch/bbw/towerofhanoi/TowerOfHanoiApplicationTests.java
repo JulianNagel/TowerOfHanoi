@@ -1,4 +1,4 @@
-package com.example.towerofhanoi;
+package ch.bbw.towerofhanoi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

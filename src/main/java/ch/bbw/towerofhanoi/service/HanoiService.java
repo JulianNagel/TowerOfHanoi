@@ -1,8 +1,8 @@
-package service;
+package ch.bbw.towerofhanoi.service;
 
+import ch.bbw.towerofhanoi.model.HanoiBoard;
 import org.springframework.stereotype.Service;
-import model.HanoiBoard;
-import model.exception.InvalidMoveException;
+import ch.bbw.towerofhanoi.model.exception.InvalidMoveException;
 
 
 @Service

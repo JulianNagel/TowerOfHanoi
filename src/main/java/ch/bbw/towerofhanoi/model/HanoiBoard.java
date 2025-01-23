@@ -1,6 +1,8 @@
-package model;
+package ch.bbw.towerofhanoi.model;
 
-import model.exception.InvalidMoveException;
+import ch.bbw.towerofhanoi.model.exception.InvalidMoveException;
+import org.springframework.stereotype.Component;
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -19,6 +21,7 @@ import java.util.stream.Stream;
  * @param pegB usually the auxiliary pole
  * @param pegC usually the target location
  */
+@Component
 public record HanoiBoard(LinkedList<Integer> pegA, LinkedList<Integer> pegB, LinkedList<Integer> pegC) {
 
 	public HanoiBoard { // verified this to be a valid board
@@ -155,13 +158,10 @@ public record HanoiBoard(LinkedList<Integer> pegA, LinkedList<Integer> pegB, Lin
 		return String.format("A:%s, B:%s, C:%s", pegA, pegB, pegC);
 	}
 
-
-
-	public String calculateBestMove() {
+	public String calculateBestMove() {/*implementiern*/
 		return "placeholder";
 	}
-	/*das au!!!
-	**/
+
 
 	/**
 	 * Identifies one of three pegs (rods/poles/sticks).

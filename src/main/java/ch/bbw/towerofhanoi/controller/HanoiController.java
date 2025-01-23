@@ -1,17 +1,21 @@
-package controller;
+package ch.bbw.towerofhanoi.controller;
 
+import ch.bbw.towerofhanoi.service.HanoiService;
+import ch.bbw.towerofhanoi.model.HanoiBoard;
 import org.springframework.beans.factory.annotation.Autowired;
-import model.exception.InvalidMoveException;
-import model.HanoiBoard;
+import ch.bbw.towerofhanoi.model.exception.InvalidMoveException;
 import org.springframework.http.ResponseEntity;
 
 
 import org.springframework.web.bind.annotation.*;
-import service.HanoiService;
 
 @RestController
 @RequestMapping("/hanoi")
 public class HanoiController {
+    @GetMapping
+    public ResponseEntity<String> handleRoot() {
+        return ResponseEntity.ok("Welcome to the Tower of Hanoi API!");
+    }
     private final HanoiService hanoiService;
 
     @Autowired
