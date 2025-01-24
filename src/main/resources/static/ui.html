@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tower of Hanoi</title>
+    <script>
+        async function makeMove() {
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const response = await fetch(`/hanoi/move?from=${from}&to=${to}`, { method: 'POST' });
+            const result = await response.text();
+            document.getElementById('result').innerText = result;
+            getCurrentState();
+        }
+
+        async function getCurrentState() {
+            const response = await fetch('/hanoi/currentState');
+            const state = await response.json();
+            document.getElementById('state').innerText = JSON.stringify(state, null, 2);
+        }
+
+        async function getBestMove() {
+            const numDisks = 3;
+            const source = 0;
+            const target = 2;
+            const auxiliary = 1;
+
+            try {
+                const response = await fetch(`/hanoi/bestMove?numDisks=${numDisks}&source=${source}&target=${target}&helper=${auxiliary}`);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+                const bestMove = await response.text();
+                document.getElementById('bestMove').innerText = bestMove;
+            } catch (error) {
+                document.getElementById('bestMove').innerText = `Failed to fetch best move: ${error.message}`;
+            }
+        }
+
+        window.onload = getCurrentState;
+    </script>
+</head>
+<body>
+<h1>Tower of Hanoi</h1>
+<div>
+    <label for="from">From Peg:</label>
+    <input type="number" id="from" min="0" max="2">
+    <label for="to">To Peg:</label>
+    <input type="number" id="to" min="0" max="2">
+    <button onclick="makeMove()">Bewegen</button>
+</div>
+<div>
+    <button onclick="getBestMove()">Bester Zug</button>
+    <p id="bestMove"></p>
+</div>
+<div>
+    <h2>Current State</h2>
+    <pre id="state"></pre>
+</div>
+<div>
+    <p id="result"></p>
+</div>
+</body>
+</html>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class HanoiController {
     @GetMapping
     public ResponseEntity<String> handleRoot() {
-        return ResponseEntity.ok("Welcome to the Tower of Hanoi API!");
+        return ResponseEntity.ok("Willkommen zur API!");
     }
     private final HanoiService hanoiService;
 
@@ -34,11 +34,13 @@ public class HanoiController {
     }
 
     @GetMapping("/bestMove")
-    public ResponseEntity<String> getBestMove() {
-        String bestMove = hanoiService.getBestMove();
-        return ResponseEntity.ok(bestMove);
+    public ResponseEntity<String> getBestMove(@RequestParam int numDisks,
+                                              @RequestParam int source,
+                                              @RequestParam int target,
+                                              @RequestParam int helper) {
+        String advice = hanoiService.getBestMove(numDisks, source, target, helper);
+        return ResponseEntity.ok(advice);
     }
-
     @GetMapping("/currentState")
     public ResponseEntity<HanoiBoard> getGameState() {
         return ResponseEntity.ok(hanoiService.getGameState());

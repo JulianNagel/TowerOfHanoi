@@ -158,8 +158,15 @@ public record HanoiBoard(LinkedList<Integer> pegA, LinkedList<Integer> pegB, Lin
 		return String.format("A:%s, B:%s, C:%s", pegA, pegB, pegC);
 	}
 
-	public String calculateBestMove() {/*implementiern*/
-		return "placeholder";
+	public String calculateBestMove(int numDisks, int source, int target, int helper) {
+
+		if (numDisks == 1) {
+			return "Bewege Plättchen " + source + " nach Turm " + target;
+		}
+
+        return calculateBestMove(numDisks - 1, source, helper, target) + "\n" +
+				"Bewege Plättchen von Turm " + source + " zu Turm " + target + "\n" +
+				calculateBestMove(numDisks - 1, helper, target, source);
 	}
 
 
